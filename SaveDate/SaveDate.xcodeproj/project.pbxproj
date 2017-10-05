@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA12F4671F85C02900F1D7E6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F4661F85C02900F1D7E6 /* Day.swift */; };
+		AA12F46B1F85C30B00F1D7E6 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F46A1F85C30B00F1D7E6 /* DayTests.swift */; };
+		AA12F46F1F85D5BE00F1D7E6 /* DayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F46E1F85D5BE00F1D7E6 /* DayName.swift */; };
+		AA12F4711F85D65600F1D7E6 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F4701F85D65600F1D7E6 /* CalendarItem.swift */; };
+		AA12F4731F85DE7B00F1D7E6 /* DayNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F4721F85DE7B00F1D7E6 /* DayNameTests.swift */; };
 		AA1E56881F83499900B4944C /* SaveDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1E567E1F83499900B4944C /* SaveDate.framework */; };
-		AA1E568D1F83499900B4944C /* SaveDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E568C1F83499900B4944C /* SaveDateTests.swift */; };
 		AA1E568F1F83499900B4944C /* SaveDate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1E56811F83499900B4944C /* SaveDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -23,11 +27,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA12F4661F85C02900F1D7E6 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		AA12F46A1F85C30B00F1D7E6 /* DayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
+		AA12F46E1F85D5BE00F1D7E6 /* DayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayName.swift; sourceTree = "<group>"; };
+		AA12F4701F85D65600F1D7E6 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
+		AA12F4721F85DE7B00F1D7E6 /* DayNameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNameTests.swift; sourceTree = "<group>"; };
 		AA1E567E1F83499900B4944C /* SaveDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SaveDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1E56811F83499900B4944C /* SaveDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveDate.h; sourceTree = "<group>"; };
 		AA1E56821F83499900B4944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1E56871F83499900B4944C /* SaveDateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveDateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA1E568C1F83499900B4944C /* SaveDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDateTests.swift; sourceTree = "<group>"; };
 		AA1E568E1F83499900B4944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +58,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA12F4681F85C2D200F1D7E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA12F4701F85D65600F1D7E6 /* CalendarItem.swift */,
+				AA12F4661F85C02900F1D7E6 /* Day.swift */,
+				AA12F46E1F85D5BE00F1D7E6 /* DayName.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AA12F4691F85C2E300F1D7E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA12F46A1F85C30B00F1D7E6 /* DayTests.swift */,
+				AA12F4721F85DE7B00F1D7E6 /* DayNameTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AA1E56741F83499900B4944C = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +98,7 @@
 		AA1E56801F83499900B4944C /* SaveDate */ = {
 			isa = PBXGroup;
 			children = (
+				AA12F4681F85C2D200F1D7E6 /* Model */,
 				AA1E56811F83499900B4944C /* SaveDate.h */,
 				AA1E56821F83499900B4944C /* Info.plist */,
 			);
@@ -80,7 +108,7 @@
 		AA1E568B1F83499900B4944C /* SaveDateTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA1E568C1F83499900B4944C /* SaveDateTests.swift */,
+				AA12F4691F85C2E300F1D7E6 /* Model */,
 				AA1E568E1F83499900B4944C /* Info.plist */,
 			);
 			path = SaveDateTests;
@@ -148,6 +176,7 @@
 				TargetAttributes = {
 					AA1E567D1F83499900B4944C = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					AA1E56861F83499900B4944C = {
@@ -196,6 +225,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA12F4671F85C02900F1D7E6 /* Day.swift in Sources */,
+				AA12F4711F85D65600F1D7E6 /* CalendarItem.swift in Sources */,
+				AA12F46F1F85D5BE00F1D7E6 /* DayName.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1E568D1F83499900B4944C /* SaveDateTests.swift in Sources */,
+				AA12F46B1F85C30B00F1D7E6 /* DayTests.swift in Sources */,
+				AA12F4731F85DE7B00F1D7E6 /* DayNameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +367,7 @@
 		AA1E56931F83499900B4944C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -346,6 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.twelfthstation.SaveDate;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,6 +389,7 @@
 		AA1E56941F83499900B4944C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -374,6 +410,7 @@
 		AA1E56961F83499900B4944C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SaveDateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -387,6 +424,7 @@
 		AA1E56971F83499900B4944C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SaveDateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
