@@ -9,18 +9,20 @@
 import Foundation
 
 struct Day: CalendarItem {
-    private var anchor: Date
-    private var anchorComponents: DateComponents
     private var calendar: Calendar
     private var date: Date
     private var dateComponents: DateComponents
     
-    var isInMonth: Bool {
-        return anchorComponents.month == dateComponents.month
-    }
-    
     var isInWeekend: Bool {
         return calendar.isDateInWeekend(date)
+    }
+    
+    var month: Int {
+        guard let month = dateComponents.month else {
+            return -1
+        }
+        
+        return month
     }
     
     var name: String {
@@ -40,8 +42,6 @@ struct Day: CalendarItem {
             
         components = [.day, .month]
         self.calendar = Calendar.current
-        self.anchor = anchor
-        self.anchorComponents = calendar.dateComponents(components, from: anchor)
         self.date = date
         self.dateComponents = calendar.dateComponents(components, from: date)
     }

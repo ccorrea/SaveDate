@@ -9,12 +9,10 @@
 import Foundation
 
 struct DayName: CalendarItem {
-    let isInMonth: Bool
     let isInWeekend: Bool
     let name: String
     
     init(name: String, isInWeekend: Bool) {
-        self.isInMonth = true
         self.isInWeekend = isInWeekend
         self.name = name
     }

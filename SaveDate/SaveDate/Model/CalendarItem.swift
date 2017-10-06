@@ -9,7 +9,6 @@
 import Foundation
 
 protocol CalendarItem {
-    var isInMonth: Bool { get }
     var isInWeekend: Bool { get }
     var name: String { get }
 }

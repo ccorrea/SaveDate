@@ -18,28 +18,6 @@ class DayTests: XCTestCase {
         dateFormatter.dateFormat = "MM/dd/yyyy"
     }
     
-    func testInitializerSetsIsInMonthToTrue() {
-        let day = createDay(from: "10/30/2017")
-        
-        XCTAssertTrue(day.isInMonth)
-    }
-    
-    func testIsInMonthReturnsTrueWhenDayIsInsideAnchor() {
-        let date = dateFormatter.date(from: "10/30/2017")
-        let anchorDate = dateFormatter.date(from: "10/01/2017")
-        let day = Day(date: date!, anchor: anchorDate!)
-        
-        XCTAssertTrue(day.isInMonth)
-    }
-    
-    func testIsInMonthReturnsFalseWhenDayIsOutsideAnchor() {
-        let date = dateFormatter.date(from: "11/01/2017")
-        let anchorDate = dateFormatter.date(from: "10/01/2017")
-        let day = Day(date: date!, anchor: anchorDate!)
-        
-        XCTAssertFalse(day.isInMonth)
-    }
-    
     func testIsWeekendReturnsFalseWhenDayIsNotInWeekend() {
         let mon = createDay(from: "10/02/2017")
         let tue = createDay(from: "10/03/2017")
@@ -60,6 +38,12 @@ class DayTests: XCTestCase {
         
         XCTAssertTrue(sat.isInWeekend)
         XCTAssertTrue(sun.isInWeekend)
+    }
+    
+    func testMonthReturnsCorrectValue() {
+        let day = createDay(from: "10/01/2017")
+        
+        XCTAssertEqual(10, day.month)
     }
     
     func testNameReturnsCorrectValue() {
