@@ -9,7 +9,7 @@
 import Foundation
 
 struct Day: CalendarItem {
-    private var calendar: Calendar
+    private var calendar: Foundation.Calendar
     private var date: Date
     private var dateComponents: DateComponents
     
@@ -38,10 +38,10 @@ struct Day: CalendarItem {
     }
     
     init(date: Date, anchor: Date) {
-        let components: Set<Calendar.Component>
+        let components: Set<Foundation.Calendar.Component>
             
         components = [.day, .month]
-        self.calendar = Calendar.current
+        self.calendar = Foundation.Calendar.current
         self.date = date
         self.dateComponents = calendar.dateComponents(components, from: date)
     }
