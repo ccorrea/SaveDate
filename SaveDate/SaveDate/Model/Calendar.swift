@@ -24,14 +24,16 @@ struct Calendar {
     
     var dayNames: [DayName] {
         var dayNames: Array<DayName>
-        var weekdaySymbols = dateFormatter.shortWeekdaySymbols!
-        let firstSymbol = weekdaySymbols.removeFirst()
-        let lastSymbol = weekdaySymbols.removeLast()
+        let weekdaySymbols = dateFormatter.shortWeekdaySymbols!
+        let firstIndex = weekdaySymbols.startIndex
+        let lastIndex = weekdaySymbols.endIndex - 1
         
-        dayNames = weekdaySymbols.map { DayName(name: $0, isInWeekend: false) }
-        
-        dayNames.insert(DayName(name: firstSymbol, isInWeekend: true), at: 0)
-        dayNames.append(DayName(name: lastSymbol, isInWeekend: true))
+        dayNames = weekdaySymbols.map {
+            let index = weekdaySymbols.index(of: $0)!
+            let isInWeekend = (index == firstIndex || index == lastIndex)
+            
+            return DayName(name: $0, isInWeekend: isInWeekend)
+        }
         
         return dayNames
     }
