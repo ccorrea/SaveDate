@@ -38,6 +38,21 @@ struct Calendar {
         return dayNames
     }
     
+    var days: [Day] {
+        var days = Array<Day>()
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        
+        for index in 1...range.count {
+            let dayComponents = DateComponents(year: dateComponents.year, month: dateComponents.month, day: index)
+            let dayDate = calendar.date(from: dayComponents)!
+            let day = Day(date: dayDate)
+            
+            days.append(day)
+        }
+        
+        return days
+    }
+    
     var monthName: String {
         dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
         

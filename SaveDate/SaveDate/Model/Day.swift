@@ -34,12 +34,8 @@ struct Day: CalendarItem {
     }
     
     init(date: Date) {
-        self.init(date: date, anchor: date)
-    }
-    
-    init(date: Date, anchor: Date) {
         let components: Set<Foundation.Calendar.Component>
-            
+        
         components = [.day, .month]
         self.calendar = Foundation.Calendar.current
         self.date = date
