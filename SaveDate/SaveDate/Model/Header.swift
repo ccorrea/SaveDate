@@ -1,5 +1,5 @@
 //
-//  Weekday.swift
+//  Header.swift
 //  SaveDate
 //
 //  Created by Christian Correa on 10/4/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Weekday: Cell {
+struct Header: Cell {
     let name: String
     let type: CellType
     

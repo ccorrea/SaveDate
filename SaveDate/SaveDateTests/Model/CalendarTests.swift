@@ -69,19 +69,19 @@ class CalendarTests: XCTestCase {
         XCTAssertEqual("29", last.name)
     }
     
-    func testWeekdays() {
-        let weekdays = calendar.weekdays
+    func testHeaders() {
+        let headers = calendar.headers
         
-        XCTAssertNotNil(weekdays)
-        XCTAssertEqual(7, weekdays.count)
+        XCTAssertNotNil(headers)
+        XCTAssertEqual(7, headers.count)
         
-        let sun = weekdays[0]
-        let mon = weekdays[1]
-        let tue = weekdays[2]
-        let wed = weekdays[3]
-        let thu = weekdays[4]
-        let fri = weekdays[5]
-        let sat = weekdays[6]
+        let sun = headers[0]
+        let mon = headers[1]
+        let tue = headers[2]
+        let wed = headers[3]
+        let thu = headers[4]
+        let fri = headers[5]
+        let sat = headers[6]
         
         XCTAssertEqual("Sun", sun.name)
         XCTAssertEqual("Mon", mon.name)

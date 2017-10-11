@@ -20,15 +20,6 @@ struct Calendar {
         self.dateFormatter.locale = Locale.current
     }
     
-    var weekdays: [Weekday] {
-        var weekdays: Array<Weekday>
-        let weekdaySymbols = dateFormatter.shortWeekdaySymbols!
-        
-        weekdays = weekdaySymbols.map { Weekday(name: $0) }
-        
-        return weekdays
-    }
-    
     var days: [Day] {
         var days = Array<Day>()
         let range = calendar.range(of: .day, in: .month, for: date)!
@@ -41,6 +32,15 @@ struct Calendar {
         }
         
         return days
+    }
+    
+    var headers: [Header] {
+        var headers: Array<Header>
+        let weekdaySymbols = dateFormatter.shortWeekdaySymbols!
+        
+        headers = weekdaySymbols.map { Header(name: $0) }
+        
+        return headers
     }
     
     var monthName: String {
