@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Day: CalendarItem {
+struct Day: Cell {
     private var calendar: Foundation.Calendar
     private var date: Date
     private var dateComponents: DateComponents

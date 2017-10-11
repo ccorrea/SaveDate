@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Weekday: CalendarItem {
+struct Weekday: Cell {
     let isInWeekend: Bool
     let name: String
     

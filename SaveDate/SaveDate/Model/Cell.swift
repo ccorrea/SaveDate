@@ -1,5 +1,5 @@
 //
-//  CalendarItem.swift
+//  Cell.swift
 //  SaveDate
 //
 //  Created by Christian Correa on 10/4/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CalendarItem {
+protocol Cell {
     var isInWeekend: Bool { get }
     var name: String { get }
 }
