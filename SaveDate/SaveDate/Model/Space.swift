@@ -1,5 +1,5 @@
 //
-//  CellType.swift
+//  Space.swift
 //  SaveDate
 //
 //  Created by Christian Correa on 10/10/17.
@@ -8,10 +8,12 @@
 
 import Foundation
 
-enum CellType {
-    case header
-    case outsideMonth
-    case space
-    case weekday
-    case weekend
+struct Space: Cell {
+    var name: String
+    var type: CellType
+    
+    init() {
+        self.name = ""
+        self.type = .space
+    }
 }

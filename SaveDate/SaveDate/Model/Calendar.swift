@@ -20,18 +20,26 @@ struct Calendar {
         self.dateFormatter.locale = Locale.current
     }
     
-    var days: [Day] {
-        var days = Array<Day>()
+    var cells: [Cell] {
+        var cells = Array<Cell>()
         let range = calendar.range(of: .day, in: .month, for: date)!
+        let firstOfMonth = createDate(forDayOfMonth: 1)
+        let weekday = calendar.component(.weekday, from: firstOfMonth)
         
-        for index in 1...range.count {
+        for _ in 1 ..< weekday {
+            let space = Space()
+            
+            cells.append(space)
+        }
+        
+        for index in 1 ... range.count {
             let dayDate = createDate(forDayOfMonth: index)
             let day = Day(date: dayDate)
             
-            days.append(day)
+            cells.append(day)
         }
         
-        return days
+        return cells
     }
     
     var headers: [Header] {
