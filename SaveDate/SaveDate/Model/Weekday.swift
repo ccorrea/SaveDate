@@ -1,5 +1,5 @@
 //
-//  DayName.swift
+//  Weekday.swift
 //  SaveDate
 //
 //  Created by Christian Correa on 10/4/17.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct DayName: CalendarItem {
+struct Weekday: CalendarItem {
     let isInWeekend: Bool
     let name: String
     
-    init(name: String, isInWeekend: Bool) {
-        self.isInWeekend = isInWeekend
+    init(name: String) {
+        self.isInWeekend = true
         self.name = name
     }
 }

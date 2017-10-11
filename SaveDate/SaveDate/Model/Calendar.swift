@@ -20,20 +20,13 @@ struct Calendar {
         self.dateFormatter.locale = Locale.current
     }
     
-    var dayNames: [DayName] {
-        var dayNames: Array<DayName>
+    var weekdays: [Weekday] {
+        var weekdays: Array<Weekday>
         let weekdaySymbols = dateFormatter.shortWeekdaySymbols!
-        let firstIndex = weekdaySymbols.startIndex
-        let lastIndex = weekdaySymbols.endIndex - 1
         
-        dayNames = weekdaySymbols.map {
-            let index = weekdaySymbols.index(of: $0)!
-            let isInWeekend = (index == firstIndex || index == lastIndex)
-            
-            return DayName(name: $0, isInWeekend: isInWeekend)
-        }
+        weekdays = weekdaySymbols.map { Weekday(name: $0) }
         
-        return dayNames
+        return weekdays
     }
     
     var days: [Day] {

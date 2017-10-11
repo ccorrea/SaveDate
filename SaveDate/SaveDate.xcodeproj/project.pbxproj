@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		AA12F4671F85C02900F1D7E6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F4661F85C02900F1D7E6 /* Day.swift */; };
 		AA12F46B1F85C30B00F1D7E6 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F46A1F85C30B00F1D7E6 /* DayTests.swift */; };
-		AA12F46F1F85D5BE00F1D7E6 /* DayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F46E1F85D5BE00F1D7E6 /* DayName.swift */; };
+		AA12F46F1F85D5BE00F1D7E6 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F46E1F85D5BE00F1D7E6 /* Weekday.swift */; };
 		AA12F4711F85D65600F1D7E6 /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12F4701F85D65600F1D7E6 /* CalendarItem.swift */; };
 		AA1E56881F83499900B4944C /* SaveDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1E567E1F83499900B4944C /* SaveDate.framework */; };
 		AA1E568F1F83499900B4944C /* SaveDate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1E56811F83499900B4944C /* SaveDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA4F68071F8DEB15001C86C8 /* WeekdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F68061F8DEB15001C86C8 /* WeekdayTests.swift */; };
 		AAE3C4361F875F6900F0F721 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4351F875F6900F0F721 /* Calendar.swift */; };
 		AAE3C4381F8775DA00F0F721 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */; };
 /* End PBXBuildFile section */
@@ -30,13 +31,14 @@
 /* Begin PBXFileReference section */
 		AA12F4661F85C02900F1D7E6 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		AA12F46A1F85C30B00F1D7E6 /* DayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
-		AA12F46E1F85D5BE00F1D7E6 /* DayName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayName.swift; sourceTree = "<group>"; };
+		AA12F46E1F85D5BE00F1D7E6 /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		AA12F4701F85D65600F1D7E6 /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		AA1E567E1F83499900B4944C /* SaveDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SaveDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1E56811F83499900B4944C /* SaveDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveDate.h; sourceTree = "<group>"; };
 		AA1E56821F83499900B4944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA1E56871F83499900B4944C /* SaveDateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveDateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1E568E1F83499900B4944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA4F68061F8DEB15001C86C8 /* WeekdayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayTests.swift; sourceTree = "<group>"; };
 		AAE3C4351F875F6900F0F721 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +68,7 @@
 				AAE3C4351F875F6900F0F721 /* Calendar.swift */,
 				AA12F4701F85D65600F1D7E6 /* CalendarItem.swift */,
 				AA12F4661F85C02900F1D7E6 /* Day.swift */,
-				AA12F46E1F85D5BE00F1D7E6 /* DayName.swift */,
+				AA12F46E1F85D5BE00F1D7E6 /* Weekday.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -76,6 +78,7 @@
 			children = (
 				AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */,
 				AA12F46A1F85C30B00F1D7E6 /* DayTests.swift */,
+				AA4F68061F8DEB15001C86C8 /* WeekdayTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,7 +233,7 @@
 			files = (
 				AA12F4671F85C02900F1D7E6 /* Day.swift in Sources */,
 				AA12F4711F85D65600F1D7E6 /* CalendarItem.swift in Sources */,
-				AA12F46F1F85D5BE00F1D7E6 /* DayName.swift in Sources */,
+				AA12F46F1F85D5BE00F1D7E6 /* Weekday.swift in Sources */,
 				AAE3C4361F875F6900F0F721 /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4F68071F8DEB15001C86C8 /* WeekdayTests.swift in Sources */,
 				AA12F46B1F85C30B00F1D7E6 /* DayTests.swift in Sources */,
 				AAE3C4381F8775DA00F0F721 /* CalendarTests.swift in Sources */,
 			);
