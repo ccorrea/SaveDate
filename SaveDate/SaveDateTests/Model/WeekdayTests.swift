@@ -11,10 +11,10 @@ import XCTest
 
 class WeekdayTests: XCTestCase {
     
-    func testIsInWeekend() {
+    func testType() {
         let weekday = Weekday(name: "Sunday")
         
-        XCTAssertTrue(weekday.isInWeekend)
+        XCTAssertEqual(CellType.header, weekday.type)
     }
     
 }

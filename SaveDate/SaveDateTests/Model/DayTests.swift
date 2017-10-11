@@ -18,28 +18,24 @@ class DayTests: XCTestCase {
         dateFormatter.dateFormat = "MM/dd/yyyy"
     }
     
-    func testIsWeekendReturnsFalseWhenDayIsNotInWeekend() {
+    func testType() {
         let mon = createDay(from: "10/02/2017")
         let tue = createDay(from: "10/03/2017")
         let wed = createDay(from: "10/04/2017")
         let thu = createDay(from: "10/05/2017")
         let fri = createDay(from: "10/06/2017")
-        
-        XCTAssertFalse(mon.isInWeekend)
-        XCTAssertFalse(tue.isInWeekend)
-        XCTAssertFalse(wed.isInWeekend)
-        XCTAssertFalse(thu.isInWeekend)
-        XCTAssertFalse(fri.isInWeekend)
-    }
-    
-    func testIsWeekendReturnsTrueWhenDayIsInWeekend() {
         let sat = createDay(from: "10/07/2017")
         let sun = createDay(from: "10/08/2017")
         
-        XCTAssertTrue(sat.isInWeekend)
-        XCTAssertTrue(sun.isInWeekend)
+        XCTAssertEqual(CellType.weekday, mon.type)
+        XCTAssertEqual(CellType.weekday, tue.type)
+        XCTAssertEqual(CellType.weekday, wed.type)
+        XCTAssertEqual(CellType.weekday, thu.type)
+        XCTAssertEqual(CellType.weekday, fri.type)
+        XCTAssertEqual(CellType.weekend, sat.type)
+        XCTAssertEqual(CellType.weekend, sun.type)
     }
-    
+        
     func testMonthReturnsCorrectValue() {
         let day = createDay(from: "10/01/2017")
         

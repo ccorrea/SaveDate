@@ -9,6 +9,6 @@
 import Foundation
 
 protocol Cell {
-    var isInWeekend: Bool { get }
     var name: String { get }
+    var type: CellType { get }
 }

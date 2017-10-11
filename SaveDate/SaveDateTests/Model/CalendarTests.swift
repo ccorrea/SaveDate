@@ -83,14 +83,6 @@ class CalendarTests: XCTestCase {
         let fri = weekdays[5]
         let sat = weekdays[6]
         
-        XCTAssertTrue(sun.isInWeekend)
-        XCTAssertTrue(mon.isInWeekend)
-        XCTAssertTrue(tue.isInWeekend)
-        XCTAssertTrue(wed.isInWeekend)
-        XCTAssertTrue(thu.isInWeekend)
-        XCTAssertTrue(fri.isInWeekend)
-        XCTAssertTrue(sat.isInWeekend)
-        
         XCTAssertEqual("Sun", sun.name)
         XCTAssertEqual("Mon", mon.name)
         XCTAssertEqual("Tue", tue.name)

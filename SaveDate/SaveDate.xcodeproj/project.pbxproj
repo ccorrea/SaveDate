@@ -14,6 +14,7 @@
 		AA1E56881F83499900B4944C /* SaveDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1E567E1F83499900B4944C /* SaveDate.framework */; };
 		AA1E568F1F83499900B4944C /* SaveDate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1E56811F83499900B4944C /* SaveDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA4F68071F8DEB15001C86C8 /* WeekdayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F68061F8DEB15001C86C8 /* WeekdayTests.swift */; };
+		AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */; };
 		AAE3C4361F875F6900F0F721 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4351F875F6900F0F721 /* Calendar.swift */; };
 		AAE3C4381F8775DA00F0F721 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		AA1E56871F83499900B4944C /* SaveDateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveDateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1E568E1F83499900B4944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA4F68061F8DEB15001C86C8 /* WeekdayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayTests.swift; sourceTree = "<group>"; };
+		AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		AAE3C4351F875F6900F0F721 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 			children = (
 				AAE3C4351F875F6900F0F721 /* Calendar.swift */,
 				AA12F4701F85D65600F1D7E6 /* Cell.swift */,
+				AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */,
 				AA12F4661F85C02900F1D7E6 /* Day.swift */,
 				AA12F46E1F85D5BE00F1D7E6 /* Weekday.swift */,
 			);
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */,
 				AA12F4671F85C02900F1D7E6 /* Day.swift in Sources */,
 				AA12F4711F85D65600F1D7E6 /* Cell.swift in Sources */,
 				AA12F46F1F85D5BE00F1D7E6 /* Weekday.swift in Sources */,

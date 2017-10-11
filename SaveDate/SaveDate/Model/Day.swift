@@ -13,10 +13,6 @@ struct Day: Cell {
     private var date: Date
     private var dateComponents: DateComponents
     
-    var isInWeekend: Bool {
-        return calendar.isDateInWeekend(date)
-    }
-    
     var month: Int {
         guard let month = dateComponents.month else {
             return -1
@@ -31,6 +27,12 @@ struct Day: Cell {
         }
         
         return day.description
+    }
+    
+    var type: CellType {
+        let inWeekend = calendar.isDateInWeekend(date)
+        
+        return inWeekend ? .weekend : .weekday
     }
     
     init(date: Date) {

@@ -9,11 +9,11 @@
 import Foundation
 
 struct Weekday: Cell {
-    let isInWeekend: Bool
     let name: String
+    let type: CellType
     
     init(name: String) {
-        self.isInWeekend = true
         self.name = name
+        self.type = .header
     }
 }
