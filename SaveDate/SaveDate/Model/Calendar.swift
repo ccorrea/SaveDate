@@ -11,13 +11,11 @@ import Foundation
 struct Calendar {
     let calendar: Foundation.Calendar
     let date: Date
-    let dateComponents: DateComponents
     let dateFormatter: DateFormatter
     
     init(date: Date) {
         self.calendar = Foundation.Calendar.current
         self.date = date
-        self.dateComponents = self.calendar.dateComponents([.month, .year], from: date)
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale.current
     }
@@ -43,8 +41,7 @@ struct Calendar {
         let range = calendar.range(of: .day, in: .month, for: date)!
         
         for index in 1...range.count {
-            let dayComponents = DateComponents(year: dateComponents.year, month: dateComponents.month, day: index)
-            let dayDate = calendar.date(from: dayComponents)!
+            let dayDate = createDate(forDayOfMonth: index)
             let day = Day(date: dayDate)
             
             days.append(day)
@@ -57,5 +54,19 @@ struct Calendar {
         dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
         
         return dateFormatter.string(from: date)
+    }
+    
+    private func createDate(forDayOfMonth day: Int) -> Date {
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        
+        return createDate(year: year, month: month, day: day)
+    }
+    
+    private func createDate(year: Int, month: Int, day: Int) -> Date {
+        let components = DateComponents(year: year, month: month, day: day)
+        let date = calendar.date(from: components)!
+
+        return date
     }
 }
