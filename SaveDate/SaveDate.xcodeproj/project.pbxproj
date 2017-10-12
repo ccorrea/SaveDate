@@ -14,6 +14,8 @@
 		AA1E56881F83499900B4944C /* SaveDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1E567E1F83499900B4944C /* SaveDate.framework */; };
 		AA1E568F1F83499900B4944C /* SaveDate.h in Headers */ = {isa = PBXBuildFile; fileRef = AA1E56811F83499900B4944C /* SaveDate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA4F68071F8DEB15001C86C8 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4F68061F8DEB15001C86C8 /* HeaderTests.swift */; };
+		AA6653001F8F3EC300F89F8E /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6652FF1F8F3EC300F89F8E /* DateExtensions.swift */; };
+		AA6653031F8F3FF500F89F8E /* DateExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6653021F8F3FF500F89F8E /* DateExtensionsTests.swift */; };
 		AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */; };
 		AA9D8CCF1F8DF18E00E69E7C /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CCE1F8DF18E00E69E7C /* Space.swift */; };
 		AA9D8CD11F8DF1FA00E69E7C /* SpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CD01F8DF1FA00E69E7C /* SpaceTests.swift */; };
@@ -42,6 +44,8 @@
 		AA1E56871F83499900B4944C /* SaveDateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaveDateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1E568E1F83499900B4944C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA4F68061F8DEB15001C86C8 /* HeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTests.swift; sourceTree = "<group>"; };
+		AA6652FF1F8F3EC300F89F8E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		AA6653021F8F3FF500F89F8E /* DateExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionsTests.swift; sourceTree = "<group>"; };
 		AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		AA9D8CCE1F8DF18E00E69E7C /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		AA9D8CD01F8DF1FA00E69E7C /* SpaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTests.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		AA1E56801F83499900B4944C /* SaveDate */ = {
 			isa = PBXGroup;
 			children = (
+				AA6652FE1F8F3EB200F89F8E /* Extensions */,
 				AA12F4681F85C2D200F1D7E6 /* Model */,
 				AA1E56811F83499900B4944C /* SaveDate.h */,
 				AA1E56821F83499900B4944C /* Info.plist */,
@@ -123,10 +128,27 @@
 		AA1E568B1F83499900B4944C /* SaveDateTests */ = {
 			isa = PBXGroup;
 			children = (
+				AA6653011F8F3FE300F89F8E /* Extensions */,
 				AA12F4691F85C2E300F1D7E6 /* Model */,
 				AA1E568E1F83499900B4944C /* Info.plist */,
 			);
 			path = SaveDateTests;
+			sourceTree = "<group>";
+		};
+		AA6652FE1F8F3EB200F89F8E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA6652FF1F8F3EC300F89F8E /* DateExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA6653011F8F3FE300F89F8E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA6653021F8F3FF500F89F8E /* DateExtensionsTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6653001F8F3EC300F89F8E /* DateExtensions.swift in Sources */,
 				AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */,
 				AA12F4671F85C02900F1D7E6 /* Day.swift in Sources */,
 				AA9D8CCF1F8DF18E00E69E7C /* Space.swift in Sources */,
@@ -253,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6653031F8F3FF500F89F8E /* DateExtensionsTests.swift in Sources */,
 				AA4F68071F8DEB15001C86C8 /* HeaderTests.swift in Sources */,
 				AA12F46B1F85C30B00F1D7E6 /* DayTests.swift in Sources */,
 				AA9D8CD11F8DF1FA00E69E7C /* SpaceTests.swift in Sources */,
