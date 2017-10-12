@@ -11,13 +11,10 @@ import Foundation
 struct Calendar {
     let calendar: Foundation.Calendar
     let date: Date
-    let dateFormatter: DateFormatter
     
     init(date: Date) {
         self.calendar = Foundation.Calendar.current
         self.date = date
-        self.dateFormatter = DateFormatter()
-        self.dateFormatter.locale = Locale.current
     }
     
     var cells: [Cell] {
@@ -44,7 +41,8 @@ struct Calendar {
     
     var headers: [Header] {
         var headers: Array<Header>
-        let weekdaySymbols = dateFormatter.shortWeekdaySymbols!
+        let formatter = createFormatter()
+        let weekdaySymbols = formatter.shortWeekdaySymbols!
         
         headers = weekdaySymbols.map { Header(name: $0) }
         
@@ -52,9 +50,11 @@ struct Calendar {
     }
     
     var monthName: String {
-        dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
+        let formatter = createFormatter();
         
-        return dateFormatter.string(from: date)
+        formatter.setLocalizedDateFormatFromTemplate("MMMM")
+        
+        return formatter.string(from: date)
     }
     
     private func createDate(forDayOfMonth day: Int) -> Date {
@@ -69,5 +69,13 @@ struct Calendar {
         let date = calendar.date(from: components)!
 
         return date
+    }
+    
+    private func createFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale.current
+        
+        return dateFormatter
     }
 }
