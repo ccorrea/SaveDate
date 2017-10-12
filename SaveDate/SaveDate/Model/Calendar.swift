@@ -20,17 +20,16 @@ struct Calendar {
     var cells: [Cell] {
         var cells = Array<Cell>()
         let range = calendar.range(of: .day, in: .month, for: date)!
-        let firstOfMonth = createDate(forDayOfMonth: 1)
-        let weekday = calendar.component(.weekday, from: firstOfMonth)
+        let firstOfMonth = createDate(year: date.year, month: date.month, day: 1)
         
-        for _ in 1 ..< weekday {
+        for _ in 1 ..< firstOfMonth.weekday {
             let space = Space()
             
             cells.append(space)
         }
         
         for index in 1 ... range.count {
-            let dayDate = createDate(forDayOfMonth: index)
+            let dayDate = createDate(year: date.year, month: date.month, day: index)
             let day = Day(date: dayDate)
             
             cells.append(day)
@@ -55,13 +54,6 @@ struct Calendar {
         formatter.setLocalizedDateFormatFromTemplate("MMMM")
         
         return formatter.string(from: date)
-    }
-    
-    private func createDate(forDayOfMonth day: Int) -> Date {
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        
-        return createDate(year: year, month: month, day: day)
     }
     
     private func createDate(year: Int, month: Int, day: Int) -> Date {
