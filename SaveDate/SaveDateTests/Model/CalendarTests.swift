@@ -23,11 +23,7 @@ class CalendarTests: XCTestCase {
         calendar = SaveDate.Calendar(date: date)
     }
     
-    func testMonthName() {
-        XCTAssertEqual("October", calendar.monthName)
-    }
-    
-    func testCellsInFebruaryOfNonLeapYear() {
+    func testCellsForFebruaryOfNonLeapYear() {
         let februaryDate = dateFormatter.date(from: "02/15/2017")!
         let february = SaveDate.Calendar(date: februaryDate)
         let days = filterDays(fromCells: february.cells)
@@ -41,7 +37,7 @@ class CalendarTests: XCTestCase {
         XCTAssertEqual("28", last.name)
     }
     
-    func testCellsInFebruaryOfLeapYear() {
+    func testCellsForFebruaryOfLeapYear() {
         let februaryDate = dateFormatter.date(from: "02/15/2020")!
         let february = SaveDate.Calendar(date: februaryDate)
         let days = filterDays(fromCells: february.cells)
@@ -55,31 +51,81 @@ class CalendarTests: XCTestCase {
         XCTAssertEqual("29", last.name)
     }
     
-    func testCellsInMonthWithLeadingSpaces() {
+    func testCellsForMonthWithLeadingSpaces() {
         let marchDate = dateFormatter.date(from: "03/15/2017")!
         let march = SaveDate.Calendar(date: marchDate)
         let cells = march.cells
         
-        XCTAssertEqual(34, cells.count)
-        
+        XCTAssertEqual(cells[0].name, "")
         XCTAssertEqual(cells[0].type, CellType.space)
+        
+        XCTAssertEqual(cells[1].name, "")
         XCTAssertEqual(cells[1].type, CellType.space)
+        
+        XCTAssertEqual(cells[2].name, "")
         XCTAssertEqual(cells[2].type, CellType.space)
+        
+        XCTAssertEqual(cells[3].name, "1")
         XCTAssertEqual(cells[3].type, CellType.weekday)
     }
     
-    func testCellsInMonthWithoutLeadingSpaces() {
+    func testCellsForMonthWithoutLeadingSpaces() {
         let januaryDate = dateFormatter.date(from: "01/15/2017")!
         let january = SaveDate.Calendar(date: januaryDate)
         let cells = january.cells
-        
-        XCTAssertEqual(31, cells.count)
-        
         let first = cells.first!
-        let last = cells.last!
         
-        XCTAssertEqual("1", first.name)
-        XCTAssertEqual("31", last.name)
+        XCTAssertEqual(first.name, "1")
+        XCTAssertEqual(first.type, CellType.weekend)
+    }
+    
+    func testCellsIncludesTrailingSpacesInFiveWeekMonth() {
+        let juneDate = dateFormatter.date(from: "06/15/2017")!
+        let june = SaveDate.Calendar(date: juneDate)
+        let cells = june.cells
+        
+        if cells.count < 42 {
+            XCTFail("Not enough cells were returned")
+            return
+        }
+        
+        XCTAssertEqual(cells[33].type, CellType.weekday)
+        XCTAssertEqual(cells[34].type, CellType.space)
+        XCTAssertEqual(cells[35].type, CellType.space)
+        XCTAssertEqual(cells[36].type, CellType.space)
+        XCTAssertEqual(cells[37].type, CellType.space)
+        XCTAssertEqual(cells[38].type, CellType.space)
+        XCTAssertEqual(cells[39].type, CellType.space)
+        XCTAssertEqual(cells[40].type, CellType.space)
+        XCTAssertEqual(cells[41].type, CellType.space)
+    }
+    
+    func testCellsIncludesTrailingSpacesInSixWeekMonth() {
+        let julyDate = dateFormatter.date(from: "07/15/2017")!
+        let july = SaveDate.Calendar(date: julyDate)
+        let cells = july.cells
+        
+        if cells.count < 42 {
+            XCTFail("Not enough cells were returned")
+            return
+        }
+        
+        XCTAssertEqual(cells[36].type, CellType.weekday)
+        XCTAssertEqual(cells[37].type, CellType.space)
+        XCTAssertEqual(cells[38].type, CellType.space)
+        XCTAssertEqual(cells[39].type, CellType.space)
+        XCTAssertEqual(cells[40].type, CellType.space)
+        XCTAssertEqual(cells[41].type, CellType.space)
+    }
+    
+    func testCellsReturnsCorrectNumberOfCells() {
+        for index in 1 ... 12 {
+            let dateFormat = "\(index)/15/2017"
+            let date = dateFormatter.date(from: dateFormat)!
+            let calendar = SaveDate.Calendar(date: date)
+            
+            XCTAssertEqual(42, calendar.cells.count)
+        }
     }
     
     func testHeaders() {
@@ -105,6 +151,10 @@ class CalendarTests: XCTestCase {
         XCTAssertEqual("Sat", sat.name)
     }
 
+    func testMonthName() {
+        XCTAssertEqual("October", calendar.monthName)
+    }
+    
     private func filterDays(fromCells cells: [Cell]) -> [Cell] {
         return cells.filter {
             guard $0 is Day else {

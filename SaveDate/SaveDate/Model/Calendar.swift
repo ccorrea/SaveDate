@@ -9,6 +9,8 @@
 import Foundation
 
 struct Calendar {
+    static let numberOfCells = 42
+    
     let calendar: Foundation.Calendar
     let date: Date
     
@@ -33,6 +35,15 @@ struct Calendar {
             let day = Day(date: dayDate)
             
             cells.append(day)
+        }
+        
+        let cellsCreated = cells.count
+        let nextIndex = cellsCreated + 1
+        
+        for _ in nextIndex ... Calendar.numberOfCells {
+            let space = Space()
+            
+            cells.append(space)
         }
         
         return cells
