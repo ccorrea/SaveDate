@@ -2,13 +2,11 @@
 
 # A Simple Calendar Framework in Swift 
 
-_Save the Date_ is a Swift framework for displaying simple calendars on your iOS app. 
+_Save the Date_ is a quick-and-clean calendar view implementation, written in Swift.  
 
-Until Apple decides to include a calendar view in UIKit, I believe that the best way to have users select a date value on an app is by using the model that most people are already familiar with: The calendar on their wall. The main design goals of _Save the Date_ are simplicity of use and a small footprint. 
+The best way to have users select a date value on an app is by using the familiar calendar layout. The main design goals of _Save the Date_ are simple integration and a small footprint. For the current version of this framework, the number of features is limited. Developers looking for in-depth customization of their calendars should take a look at [CVCalendar][2], [FSCalendar][3] and [JTAppleCalendar][4]. 
 
-With simplicity of use comes a reduced feature set. Developers looking for in-depth customization of their calendars should take a look at [CVCalendar][2], [FSCalendar][3] and [JTAppleCalendar][4]. I hope that _Save the Date_ will be helpful to developers who want a quick-and-clean calendar implementation to plug-in into their apps with minimal effort. 
-
-This README file will be updated with usage example as the framework is developed. 
+**This is work in progress.** I will update this README file and add usage examples when version 1.0 is complete. 
 
 [1]: https://raw.githubusercontent.com/ccorrea/SaveDate/master/Resources/Save-the-Date.png
 [2]: https://github.com/CVCalendar/CVCalendar
