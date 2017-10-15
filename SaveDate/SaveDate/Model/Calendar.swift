@@ -13,28 +13,39 @@ struct Calendar {
     
     let calendar: Foundation.Calendar
     let date: Date
+    let headers: [Header]
+    let monthName: String
     
     init(date: Date) {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
+        
+        dateFormatter.locale = Locale.current
         self.calendar = Foundation.Calendar.current
         self.date = date
+        self.headers = dateFormatter.shortWeekdaySymbols!.map { Header(name: $0) }
+        self.monthName = dateFormatter.string(from: date)
     }
     
-    var cells: [Cell] {
+    private (set) lazy var cells: [Cell] = createCells()
+
+    private func createCells() -> [Cell] {
         var cells = Array<Cell>()
         let range = calendar.range(of: .day, in: .month, for: date)!
-        let firstOfMonth = createDate(year: date.year, month: date.month, day: 1)
+        let firstDateComponents = DateComponents(year: date.year, month: date.month, day: 1)
+        let firstDate = calendar.date(from: firstDateComponents)!
         
-        for _ in 1 ..< firstOfMonth.weekday {
-            let space = Space()
-            
-            cells.append(space)
+        for _ in 1 ..< firstDate.weekday {
+            cells.append(Space())
         }
         
         for index in 1 ... range.count {
-            let dayDate = createDate(year: date.year, month: date.month, day: index)
-            let day = Day(date: dayDate)
+            let currentDateComponents = DateComponents(year: date.year, month: date.month, day: index)
+            let currentDate = calendar.date(from: currentDateComponents)!
+            let currentDay = Day(date: currentDate)
             
-            cells.append(day)
+            cells.append(currentDay)
         }
         
         let cellsCreated = cells.count
@@ -47,38 +58,5 @@ struct Calendar {
         }
         
         return cells
-    }
-    
-    var headers: [Header] {
-        var headers: Array<Header>
-        let formatter = createFormatter()
-        let weekdaySymbols = formatter.shortWeekdaySymbols!
-        
-        headers = weekdaySymbols.map { Header(name: $0) }
-        
-        return headers
-    }
-    
-    var monthName: String {
-        let formatter = createFormatter();
-        
-        formatter.setLocalizedDateFormatFromTemplate("MMMM")
-        
-        return formatter.string(from: date)
-    }
-    
-    private func createDate(year: Int, month: Int, day: Int) -> Date {
-        let components = DateComponents(year: year, month: month, day: day)
-        let date = calendar.date(from: components)!
-
-        return date
-    }
-    
-    private func createFormatter() -> DateFormatter {
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.locale = Locale.current
-        
-        return dateFormatter
     }
 }

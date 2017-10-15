@@ -11,21 +11,8 @@ import XCTest
 
 class CalendarTests: XCTestCase {
     
-    var calendar: SaveDate.Calendar!
-    var dateFormatter: DateFormatter!
-    
-    override func setUp() {
-        let date: Date!
-        
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        date = dateFormatter.date(from: "10/15/2017")
-        calendar = SaveDate.Calendar(date: date)
-    }
-    
     func testCellsForFebruaryOfNonLeapYear() {
-        let februaryDate = dateFormatter.date(from: "02/15/2017")!
-        let february = SaveDate.Calendar(date: februaryDate)
+        var february = createCalendar(forDate: "02/15/2017")
         let days = filterDays(fromCells: february.cells)
         
         XCTAssertEqual(28, days.count)
@@ -38,8 +25,7 @@ class CalendarTests: XCTestCase {
     }
     
     func testCellsForFebruaryOfLeapYear() {
-        let februaryDate = dateFormatter.date(from: "02/15/2020")!
-        let february = SaveDate.Calendar(date: februaryDate)
+        var february = createCalendar(forDate: "02/15/2020")
         let days = filterDays(fromCells: february.cells)
         
         XCTAssertEqual(29, days.count)
@@ -52,8 +38,7 @@ class CalendarTests: XCTestCase {
     }
     
     func testCellsForMonthWithLeadingSpaces() {
-        let marchDate = dateFormatter.date(from: "03/15/2017")!
-        let march = SaveDate.Calendar(date: marchDate)
+        var march = createCalendar(forDate: "03/15/2017")
         let cells = march.cells
         
         XCTAssertEqual(cells[0].name, "")
@@ -70,8 +55,7 @@ class CalendarTests: XCTestCase {
     }
     
     func testCellsForMonthWithoutLeadingSpaces() {
-        let januaryDate = dateFormatter.date(from: "01/15/2017")!
-        let january = SaveDate.Calendar(date: januaryDate)
+        var january = createCalendar(forDate: "01/15/2017")
         let cells = january.cells
         let first = cells.first!
         
@@ -80,8 +64,7 @@ class CalendarTests: XCTestCase {
     }
     
     func testCellsIncludesTrailingSpacesInFiveWeekMonth() {
-        let juneDate = dateFormatter.date(from: "06/15/2017")!
-        let june = SaveDate.Calendar(date: juneDate)
+        var june = createCalendar(forDate: "06/15/2017")
         let cells = june.cells
         
         if cells.count < 42 {
@@ -101,8 +84,7 @@ class CalendarTests: XCTestCase {
     }
     
     func testCellsIncludesTrailingSpacesInSixWeekMonth() {
-        let julyDate = dateFormatter.date(from: "07/15/2017")!
-        let july = SaveDate.Calendar(date: julyDate)
+        var july = createCalendar(forDate: "07/15/2017")
         let cells = july.cells
         
         if cells.count < 42 {
@@ -118,17 +100,23 @@ class CalendarTests: XCTestCase {
         XCTAssertEqual(cells[41].type, CellType.space)
     }
     
-    func testCellsReturnsCorrectNumberOfCells() {
+    func testCellsReturnsCorrectNumberOfCellsForEveryMonth() {
         for index in 1 ... 12 {
-            let dateFormat = "\(index)/15/2017"
-            let date = dateFormatter.date(from: dateFormat)!
-            let calendar = SaveDate.Calendar(date: date)
+            var dateComponents = DateComponents()
+            
+            dateComponents.year = 2017
+            dateComponents.month = index
+            dateComponents.day = 15
+            
+            let date = Calendar.current.date(from: dateComponents)!
+            var calendar = SaveDate.Calendar(date: date)
             
             XCTAssertEqual(42, calendar.cells.count)
         }
     }
     
     func testHeaders() {
+        let calendar = createCalendar(forDate: "01/15/2017")
         let headers = calendar.headers
         
         XCTAssertNotNil(headers)
@@ -152,7 +140,20 @@ class CalendarTests: XCTestCase {
     }
 
     func testMonthName() {
+        let calendar = createCalendar(forDate: "10/15/2017")
+        
         XCTAssertEqual("October", calendar.monthName)
+    }
+    
+    private func createCalendar(forDate dateString: String) -> SaveDate.Calendar {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let date = dateFormatter.date(from: dateString)!
+        let calendar = SaveDate.Calendar(date: date)
+        
+        return calendar
     }
     
     private func filterDays(fromCells cells: [Cell]) -> [Cell] {
