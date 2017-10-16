@@ -36,13 +36,13 @@ class DayTests: XCTestCase {
         XCTAssertEqual(CellType.weekend, sun.type)
     }
         
-    func testMonthReturnsCorrectValue() {
+    func testMonth() {
         let day = createDay(from: "10/01/2017")
         
         XCTAssertEqual(10, day.month)
     }
     
-    func testNameReturnsCorrectValue() {
+    func testName() {
         let day = createDay(from: "10/30/2017")
         
         XCTAssertEqual("30", day.name)

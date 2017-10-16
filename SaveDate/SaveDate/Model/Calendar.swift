@@ -35,9 +35,16 @@ struct Calendar {
         let range = calendar.range(of: .day, in: .month, for: date)!
         let firstDateComponents = DateComponents(year: date.year, month: date.month, day: 1)
         let firstDate = calendar.date(from: firstDateComponents)!
+        var delta = firstDate.weekday - 1
         
-        for _ in 1 ..< firstDate.weekday {
-            cells.append(Space())
+        while delta > 0 {
+            let operand = delta * -1
+            let currentDate = calendar.date(byAdding: .day, value: operand, to: firstDate)!
+            let currentDay = Day(date: currentDate)
+            
+            cells.append(currentDay)
+            
+            delta -= 1
         }
         
         for index in 1 ... range.count {
