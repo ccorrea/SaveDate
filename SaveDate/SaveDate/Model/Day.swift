@@ -10,24 +10,22 @@ import Foundation
 
 struct Day: Cell {
     private var calendar: Foundation.Calendar
-    private var date: Date
-    
-    var month: Int {
-        return date.month
-    }
+    private (set) var date: Date
+    private (set) var type: CellType
     
     var name: String {
         return date.day.description
     }
     
-    var type: CellType {
-        let inWeekend = calendar.isDateInWeekend(date)
-        
-        return inWeekend ? .weekend : .weekday
-    }
-    
-    init(date: Date) {
+    init(date: Date, inMonth: Bool = true) {
         self.calendar = Foundation.Calendar.current
         self.date = date
+        
+        if inMonth {
+            self.type = calendar.isDateInWeekend(date) ? .weekend : .weekday
+        }
+        else {
+            self.type = .outsideMonth
+        }
     }
 }

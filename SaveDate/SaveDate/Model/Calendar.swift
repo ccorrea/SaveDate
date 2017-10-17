@@ -40,7 +40,7 @@ struct Calendar {
         while delta > 0 {
             let operand = delta * -1
             let currentDate = calendar.date(byAdding: .day, value: operand, to: firstDate)!
-            let currentDay = Day(date: currentDate)
+            let currentDay = Day(date: currentDate, inMonth: false)
             
             cells.append(currentDay)
             
@@ -55,13 +55,16 @@ struct Calendar {
             cells.append(currentDay)
         }
         
-        let cellsCreated = cells.count
-        let nextIndex = cellsCreated + 1
-        
-        for _ in nextIndex ... Calendar.numberOfCells {
-            let space = Space()
-            
-            cells.append(space)
+        while cells.count < Calendar.numberOfCells {
+            if let lastCell = cells.last {
+                if let lastDay = lastCell as? Day {
+                    let lastDate = lastDay.date
+                    let nextDate = calendar.date(byAdding: .day, value: 1, to: lastDate)!
+                    let nextDay = Day(date: nextDate, inMonth: false)
+                    
+                    cells.append(nextDay)
+                }
+            }
         }
         
         return cells

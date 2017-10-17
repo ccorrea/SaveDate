@@ -13,94 +13,69 @@ class CalendarTests: XCTestCase {
     
     func testCellsForFebruaryOfNonLeapYear() {
         var february = createCalendar(forDate: "02/15/2017")
+        let cells = february.cells
         
-        // TODO: Use february.cells after days trailing end of the month are implemented.
-        let cells = filterDays(fromCells: february.cells)
+        XCTAssertEqual(42, cells.count)
+
+        if cells.count < 42 {
+            XCTFail("Not enough cells were returned")
+            return
+        }
         
-        // TODO: Change assertion to 42 days after days trailing end of the month are implemented.
-        XCTAssertEqual(31, cells.count)
+        // Fifth week
+        XCTAssertEqual(cells[30].name, "28")
+        XCTAssertEqual(cells[31].name, "1")
         
-        XCTAssertEqual(cells[0].name, "29")
-        XCTAssertEqual(cells[0].type, CellType.weekend)
-        
-        XCTAssertEqual(cells[1].name, "30")
-        XCTAssertEqual(cells[1].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[2].name, "31")
-        XCTAssertEqual(cells[2].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[3].name, "1")
-        XCTAssertEqual(cells[3].type, CellType.weekday)
-        
-        let last = cells.last!
-        
-        // TODO: Use february.cells indexer after days trailing end of the month are implemented.
-        XCTAssertEqual("28", last.name)
+        XCTAssertEqual(cells[30].type, .weekday)
+        XCTAssertEqual(cells[31].type, .outsideMonth)
     }
     
     func testCellsForFebruaryOfLeapYear() {
         var february = createCalendar(forDate: "02/15/2020")
+        let cells = february.cells
         
-        // TODO: Use february.cells after days trailing end of the month are implemented.
-        let cells = filterDays(fromCells: february.cells)
+        XCTAssertEqual(42, cells.count)
         
-        // TODO: Change assertion to 42 days after days trailing end of the month are implemented.
-        XCTAssertEqual(35, cells.count)
+        if cells.count < 42 {
+            XCTFail("Not enough cells were returned")
+            return
+        }
         
-        XCTAssertEqual(cells[0].name, "26")
-        XCTAssertEqual(cells[0].type, CellType.weekend)
+        // Fifth week
+        XCTAssertEqual(cells[34].name, "29")
+        XCTAssertEqual(cells[34].type, .weekend)
         
-        XCTAssertEqual(cells[1].name, "27")
-        XCTAssertEqual(cells[1].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[2].name, "28")
-        XCTAssertEqual(cells[2].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[3].name, "29")
-        XCTAssertEqual(cells[3].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[4].name, "30")
-        XCTAssertEqual(cells[4].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[5].name, "31")
-        XCTAssertEqual(cells[5].type, CellType.weekday)
-        
-        XCTAssertEqual(cells[6].name, "1")
-        XCTAssertEqual(cells[6].type, CellType.weekend)
-        
-        let last = cells.last!
-        
-        // TODO: Use february.cells indexer after days trailing end of the month are implemented.
-        XCTAssertEqual("29", last.name)
+        // Sixth week
+        XCTAssertEqual(cells[35].name, "1")
+        XCTAssertEqual(cells[35].type, .outsideMonth)
     }
     
     func testCellsForMonthWithLeadingSpaces() {
         var march = createCalendar(forDate: "03/15/2017")
         let cells = march.cells
         
+        // First week
         XCTAssertEqual(cells[0].name, "26")
-        XCTAssertEqual(cells[0].type, CellType.weekend)
-        
         XCTAssertEqual(cells[1].name, "27")
-        XCTAssertEqual(cells[1].type, CellType.weekday)
-        
         XCTAssertEqual(cells[2].name, "28")
-        XCTAssertEqual(cells[2].type, CellType.weekday)
-        
         XCTAssertEqual(cells[3].name, "1")
-        XCTAssertEqual(cells[3].type, CellType.weekday)
+        
+        XCTAssertEqual(cells[0].type, .outsideMonth)
+        XCTAssertEqual(cells[1].type, .outsideMonth)
+        XCTAssertEqual(cells[2].type, .outsideMonth)
+        XCTAssertEqual(cells[3].type, .weekday)
     }
     
     func testCellsForMonthWithoutLeadingSpaces() {
         var january = createCalendar(forDate: "01/15/2017")
         let cells = january.cells
-        let first = cells.first!
         
-        XCTAssertEqual(first.name, "1")
-        XCTAssertEqual(first.type, CellType.weekend)
+        // First week
+        XCTAssertEqual(cells[0].name, "1")
+        XCTAssertEqual(cells[0].type, .weekend)
     }
     
-    func testCellsIncludesTrailingSpacesInFiveWeekMonth() {
+    func testCellsIncludesDaysOutsideMonthInFiveWeekMonth() {
         var june = createCalendar(forDate: "06/15/2017")
         let cells = june.cells
         
@@ -109,18 +84,19 @@ class CalendarTests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(cells[33].type, CellType.weekday)
-        XCTAssertEqual(cells[34].type, CellType.space)
-        XCTAssertEqual(cells[35].type, CellType.space)
-        XCTAssertEqual(cells[36].type, CellType.space)
-        XCTAssertEqual(cells[37].type, CellType.space)
-        XCTAssertEqual(cells[38].type, CellType.space)
-        XCTAssertEqual(cells[39].type, CellType.space)
-        XCTAssertEqual(cells[40].type, CellType.space)
-        XCTAssertEqual(cells[41].type, CellType.space)
+        // Fifth week
+        XCTAssertEqual(cells[33].name, "30")
+        XCTAssertEqual(cells[34].name, "1")
+        
+        XCTAssertEqual(cells[33].type, .weekday)
+        XCTAssertEqual(cells[34].type, .outsideMonth)
+        
+        for index in 35 ... 41 {
+            XCTAssertEqual(cells[index].type, .outsideMonth)
+        }
     }
     
-    func testCellsIncludesTrailingSpacesInSixWeekMonth() {
+    func testCellsIncludesDaysOutsideMonthInSixWeekMonth() {
         var july = createCalendar(forDate: "07/15/2017")
         let cells = july.cells
         
@@ -129,12 +105,16 @@ class CalendarTests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(cells[36].type, CellType.weekday)
-        XCTAssertEqual(cells[37].type, CellType.space)
-        XCTAssertEqual(cells[38].type, CellType.space)
-        XCTAssertEqual(cells[39].type, CellType.space)
-        XCTAssertEqual(cells[40].type, CellType.space)
-        XCTAssertEqual(cells[41].type, CellType.space)
+        // Sixth week
+        XCTAssertEqual(cells[36].name, "31")
+        XCTAssertEqual(cells[37].name, "1")
+        
+        XCTAssertEqual(cells[36].type, .weekday)
+        XCTAssertEqual(cells[37].type, .outsideMonth)
+        
+        for index in 38 ... 41 {
+            XCTAssertEqual(cells[index].type, .outsideMonth)
+        }
     }
     
     func testCellsReturnsCorrectNumberOfCellsForEveryMonth() {
@@ -192,16 +172,4 @@ class CalendarTests: XCTestCase {
         
         return calendar
     }
-    
-    private func filterDays(fromCells cells: [Cell]) -> [Cell] {
-        // TODO: Remove method after days trailing end of the month are implemented.
-        return cells.filter {
-            guard $0 is Day else {
-                return false
-            }
-            
-            return true
-        }
-    }
-    
 }

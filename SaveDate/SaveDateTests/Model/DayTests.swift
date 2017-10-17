@@ -18,14 +18,30 @@ class DayTests: XCTestCase {
         dateFormatter.dateFormat = "MM/dd/yyyy"
     }
     
+    func testDate() {
+        let date = dateFormatter.date(from: "10/01/2017")
+        let day = Day(date: date!)
+        
+        XCTAssertEqual(date, day.date)
+    }
+    
+    func testInitializer() {
+        let date = createDate(from: "02/01/2017")
+        let dayInMonth = Day(date: date)
+        let dayOutsideMonth = Day(date: date, inMonth: false)
+        
+        XCTAssertEqual(.weekday, dayInMonth.type)
+        XCTAssertEqual(.outsideMonth, dayOutsideMonth.type)
+    }
+    
     func testType() {
-        let mon = createDay(from: "10/02/2017")
-        let tue = createDay(from: "10/03/2017")
-        let wed = createDay(from: "10/04/2017")
-        let thu = createDay(from: "10/05/2017")
-        let fri = createDay(from: "10/06/2017")
-        let sat = createDay(from: "10/07/2017")
-        let sun = createDay(from: "10/08/2017")
+        let mon = Day(date: createDate(from: "10/02/2017"))
+        let tue = Day(date: createDate(from: "10/03/2017"))
+        let wed = Day(date: createDate(from: "10/04/2017"))
+        let thu = Day(date: createDate(from: "10/05/2017"))
+        let fri = Day(date: createDate(from: "10/06/2017"))
+        let sat = Day(date: createDate(from: "10/07/2017"))
+        let sun = Day(date: createDate(from: "10/08/2017"))
         
         XCTAssertEqual(CellType.weekday, mon.type)
         XCTAssertEqual(CellType.weekday, tue.type)
@@ -35,23 +51,17 @@ class DayTests: XCTestCase {
         XCTAssertEqual(CellType.weekend, sat.type)
         XCTAssertEqual(CellType.weekend, sun.type)
     }
-        
-    func testMonth() {
-        let day = createDay(from: "10/01/2017")
-        
-        XCTAssertEqual(10, day.month)
-    }
     
     func testName() {
-        let day = createDay(from: "10/30/2017")
+        let date = createDate(from: "10/30/2017")
+        let day = Day(date: date)
         
         XCTAssertEqual("30", day.name)
     }
     
-    func createDay(from dateString: String) -> Day {
+    private func createDate(from dateString: String) -> Date {
         let date = dateFormatter.date(from: dateString)
-        let day = Day(date: date!)
         
-        return day
+        return date!
     }
 }
