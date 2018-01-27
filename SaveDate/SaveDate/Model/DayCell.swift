@@ -21,11 +21,21 @@ struct DayCell: Cell {
         self.calendar = Foundation.Calendar.current
         self.date = date
         
-        if inMonth {
-            self.type = calendar.isDateInWeekend(date) ? .weekend : .weekday
+        if calendar.isDateInToday(date) {
+            self.type = .today
         }
         else {
-            self.type = .notInMonth
+            if inMonth {
+                if calendar.isDateInWeekend(date) {
+                    self.type = .weekend
+                }
+                else {
+                    self.type = .weekday
+                }
+            }
+            else {
+                self.type = .dimmed
+            }
         }
     }
 }

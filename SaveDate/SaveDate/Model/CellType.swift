@@ -9,10 +9,12 @@
 import Foundation
 
 enum CellType: String {
-    case notInMonth = "NotInMonth"
+    case dimmed = "Dimmed"
+    case selected = "Selected"
     case symbol = "Symbol"
+    case today = "Today"
     case weekday = "Weekday"
     case weekend = "Weekend"
     
-    static let cases = [notInMonth, symbol, weekday, weekend]
+    static let cases = [dimmed, selected, symbol, today, weekday, weekend]
 }
