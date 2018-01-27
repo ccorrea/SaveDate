@@ -1,5 +1,5 @@
 //
-//  SaveDateControllerTests.swift
+//  CalendarControllerTests.swift
 //  SaveDateTests
 //
 //  Created by Christian Correa on 1/18/18.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class SaveDateControllerTests: XCTestCase {
+class CalendarControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
