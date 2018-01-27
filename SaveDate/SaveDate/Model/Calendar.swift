@@ -9,7 +9,7 @@
 import Foundation
 
 struct Calendar {
-    static let numberOfCells = 42
+    static let numberOfCells = 49
     
     let calendar: Foundation.Calendar
     let date: Date
@@ -24,7 +24,7 @@ struct Calendar {
         dateFormatter.locale = Locale.current
         self.calendar = Foundation.Calendar.current
         self.date = date
-        self.headers = dateFormatter.shortWeekdaySymbols!.map { Header(name: $0) }
+        self.headers = dateFormatter.veryShortWeekdaySymbols!.map { Header(name: $0) }
         self.monthName = dateFormatter.string(from: date)
     }
     
@@ -36,6 +36,10 @@ struct Calendar {
         let firstDateComponents = DateComponents(year: date.year, month: date.month, day: 1)
         let firstDate = calendar.date(from: firstDateComponents)!
         var delta = firstDate.weekday - 1
+        
+        for header in headers {
+            cells.append(header)
+        }
         
         while delta > 0 {
             let operand = delta * -1
