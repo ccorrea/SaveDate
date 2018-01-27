@@ -1,5 +1,5 @@
 //
-//  SpaceTests.swift
+//  SymbolCellTests.swift
 //  SaveDateTests
 //
 //  Created by Christian Correa on 10/10/17.
@@ -9,12 +9,12 @@
 import XCTest
 @testable import SaveDate
 
-class SpaceTests: XCTestCase {
+class SymbolCellTests: XCTestCase {
     
     func testType() {
-        let space = Space()
+        let symbolCell = SymbolCell(name: "Sunday")
         
-        XCTAssertEqual(CellType.space, space.type)
+        XCTAssertEqual(CellType.symbol, symbolCell.type)
     }
     
 }

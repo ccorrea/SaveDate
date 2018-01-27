@@ -1,5 +1,5 @@
 //
-//  DayTests.swift
+//  DayCellTests.swift
 //  SaveDateTests
 //
 //  Created by Christian Correa on 10/4/17.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import SaveDate
 
-class DayTests: XCTestCase {
+class DayCellTests: XCTestCase {
     
     var dateFormatter: DateFormatter!
     
@@ -20,28 +20,28 @@ class DayTests: XCTestCase {
     
     func testDate() {
         let date = dateFormatter.date(from: "10/01/2017")
-        let day = Day(date: date!)
+        let day = DayCell(date: date!)
         
         XCTAssertEqual(date, day.date)
     }
     
     func testInitializer() {
         let date = createDate(from: "02/01/2017")
-        let dayInMonth = Day(date: date)
-        let dayOutsideMonth = Day(date: date, inMonth: false)
+        let dayInMonth = DayCell(date: date)
+        let dayOutsideMonth = DayCell(date: date, inMonth: false)
         
         XCTAssertEqual(.weekday, dayInMonth.type)
-        XCTAssertEqual(.outsideMonth, dayOutsideMonth.type)
+        XCTAssertEqual(.dimmed, dayOutsideMonth.type)
     }
     
     func testType() {
-        let mon = Day(date: createDate(from: "10/02/2017"))
-        let tue = Day(date: createDate(from: "10/03/2017"))
-        let wed = Day(date: createDate(from: "10/04/2017"))
-        let thu = Day(date: createDate(from: "10/05/2017"))
-        let fri = Day(date: createDate(from: "10/06/2017"))
-        let sat = Day(date: createDate(from: "10/07/2017"))
-        let sun = Day(date: createDate(from: "10/08/2017"))
+        let mon = DayCell(date: createDate(from: "10/02/2017"))
+        let tue = DayCell(date: createDate(from: "10/03/2017"))
+        let wed = DayCell(date: createDate(from: "10/04/2017"))
+        let thu = DayCell(date: createDate(from: "10/05/2017"))
+        let fri = DayCell(date: createDate(from: "10/06/2017"))
+        let sat = DayCell(date: createDate(from: "10/07/2017"))
+        let sun = DayCell(date: createDate(from: "10/08/2017"))
         
         XCTAssertEqual(CellType.weekday, mon.type)
         XCTAssertEqual(CellType.weekday, tue.type)
@@ -54,7 +54,7 @@ class DayTests: XCTestCase {
     
     func testName() {
         let date = createDate(from: "10/30/2017")
-        let day = Day(date: date)
+        let day = DayCell(date: date)
         
         XCTAssertEqual("30", day.name)
     }
