@@ -9,10 +9,10 @@
 import Foundation
 
 enum CellType: String {
-    case dayOutsideBoundaries = "DayOutsideBoundaries"
+    case notInMonth = "NotInMonth"
     case symbol = "Symbol"
     case weekday = "Weekday"
-    case weekendDay = "WeekendDay"
+    case weekend = "Weekend"
     
-    static let cases = [dayOutsideBoundaries, symbol, weekday, weekendDay]
+    static let cases = [notInMonth, symbol, weekday, weekend]
 }

@@ -30,9 +30,9 @@
 		AA8D9B1220117BCC007E9DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D9B1120117BCC007E9DE7 /* ViewController.swift */; };
 		AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */; };
 		AA9D8CD11F8DF1FA00E69E7C /* SpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CD01F8DF1FA00E69E7C /* SpaceTests.swift */; };
-		AA9EDD7C2018309D00E36EEF /* DayOutsideBoundaries.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA586B142016C7CF00BF0F88 /* DayOutsideBoundaries.xib */; };
+		AA9EDD7C2018309D00E36EEF /* NotInMonth.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA586B142016C7CF00BF0F88 /* NotInMonth.xib */; };
 		AA9EDD7E201830A500E36EEF /* Weekday.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA586B162016C7E700BF0F88 /* Weekday.xib */; };
-		AA9EDD7F201830A800E36EEF /* WeekendDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA586B172016C7F100BF0F88 /* WeekendDay.xib */; };
+		AA9EDD7F201830A800E36EEF /* Weekend.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA586B172016C7F100BF0F88 /* Weekend.xib */; };
 		AAD634C7201BF277008AEBE5 /* CalendarFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD634C6201BF277008AEBE5 /* CalendarFlowLayout.swift */; };
 		AAE3C4361F875F6900F0F721 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4351F875F6900F0F721 /* Calendar.swift */; };
 		AAE3C4381F8775DA00F0F721 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */; };
@@ -65,9 +65,9 @@
 		AA550F711F99D3E300BC9A68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA550F741F99D3E300BC9A68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA550F761F99D3E300BC9A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA586B142016C7CF00BF0F88 /* DayOutsideBoundaries.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOutsideBoundaries.xib; sourceTree = "<group>"; };
+		AA586B142016C7CF00BF0F88 /* NotInMonth.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotInMonth.xib; sourceTree = "<group>"; };
 		AA586B162016C7E700BF0F88 /* Weekday.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Weekday.xib; sourceTree = "<group>"; };
-		AA586B172016C7F100BF0F88 /* WeekendDay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekendDay.xib; sourceTree = "<group>"; };
+		AA586B172016C7F100BF0F88 /* Weekend.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Weekend.xib; sourceTree = "<group>"; };
 		AA586B182016CA5600BF0F88 /* SaveDate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SaveDate.storyboard; sourceTree = "<group>"; };
 		AA6652FF1F8F3EC300F89F8E /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		AA6653021F8F3FF500F89F8E /* DateExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionsTests.swift; sourceTree = "<group>"; };
@@ -204,12 +204,12 @@
 		AA586B132016C6C900BF0F88 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA586B142016C7CF00BF0F88 /* DayOutsideBoundaries.xib */,
+				AA586B142016C7CF00BF0F88 /* NotInMonth.xib */,
 				AA1E56821F83499900B4944C /* Info.plist */,
 				AA586B182016CA5600BF0F88 /* SaveDate.storyboard */,
 				AA8D9B0E20117A15007E9DE7 /* Symbol.xib */,
 				AA586B162016C7E700BF0F88 /* Weekday.xib */,
-				AA586B172016C7F100BF0F88 /* WeekendDay.xib */,
+				AA586B172016C7F100BF0F88 /* Weekend.xib */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -373,10 +373,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA8D9B1020117A15007E9DE7 /* Symbol.xib in Resources */,
-				AA9EDD7F201830A800E36EEF /* WeekendDay.xib in Resources */,
+				AA9EDD7F201830A800E36EEF /* Weekend.xib in Resources */,
 				AA586B192016CA5600BF0F88 /* SaveDate.storyboard in Resources */,
 				AA9EDD7E201830A500E36EEF /* Weekday.xib in Resources */,
-				AA9EDD7C2018309D00E36EEF /* DayOutsideBoundaries.xib in Resources */,
+				AA9EDD7C2018309D00E36EEF /* NotInMonth.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

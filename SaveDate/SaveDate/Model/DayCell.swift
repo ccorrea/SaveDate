@@ -22,10 +22,10 @@ struct DayCell: Cell {
         self.date = date
         
         if inMonth {
-            self.type = calendar.isDateInWeekend(date) ? .weekendDay : .weekday
+            self.type = calendar.isDateInWeekend(date) ? .weekend : .weekday
         }
         else {
-            self.type = .dayOutsideBoundaries
+            self.type = .notInMonth
         }
     }
 }
