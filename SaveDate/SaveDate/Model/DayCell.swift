@@ -1,5 +1,5 @@
 //
-//  Day.swift
+//  DayCell.swift
 //  SaveDate
 //
 //  Created by Christian Correa on 10/4/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Day: Cell {
+struct DayCell: Cell {
     private var calendar: Foundation.Calendar
     private (set) var date: Date
     private (set) var type: CellType
@@ -22,10 +22,10 @@ struct Day: Cell {
         self.date = date
         
         if inMonth {
-            self.type = calendar.isDateInWeekend(date) ? .weekend : .weekday
+            self.type = calendar.isDateInWeekend(date) ? .weekendDay : .weekday
         }
         else {
-            self.type = .outsideMonth
+            self.type = .dayOutsideBoundaries
         }
     }
 }

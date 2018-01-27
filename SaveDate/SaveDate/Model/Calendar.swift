@@ -13,38 +13,39 @@ struct Calendar {
     
     let calendar: Foundation.Calendar
     let date: Date
-    let headers: [Header]
     let monthName: String
     
+    private (set) lazy var cells: [Cell] = createCells()
+    
     init(date: Date) {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = Calendar.createLocalizedDateFormatter()
         
         dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
         
-        dateFormatter.locale = Locale.current
         self.calendar = Foundation.Calendar.current
         self.date = date
-        self.headers = dateFormatter.veryShortWeekdaySymbols!.map { Header(name: $0) }
         self.monthName = dateFormatter.string(from: date)
     }
     
-    private (set) lazy var cells: [Cell] = createCells()
-
     private func createCells() -> [Cell] {
         var cells = Array<Cell>()
+        let dateFormatter = Calendar.createLocalizedDateFormatter()
         let range = calendar.range(of: .day, in: .month, for: date)!
         let firstDateComponents = DateComponents(year: date.year, month: date.month, day: 1)
         let firstDate = calendar.date(from: firstDateComponents)!
+        let weekdaySymbols = dateFormatter.veryShortWeekdaySymbols!
         var delta = firstDate.weekday - 1
         
-        for header in headers {
-            cells.append(header)
+        for weekdaySymbol in weekdaySymbols {
+            let symbolCell = SymbolCell(name: weekdaySymbol)
+            
+            cells.append(symbolCell)
         }
         
         while delta > 0 {
             let operand = delta * -1
             let currentDate = calendar.date(byAdding: .day, value: operand, to: firstDate)!
-            let currentDay = Day(date: currentDate, inMonth: false)
+            let currentDay = DayCell(date: currentDate, inMonth: false)
             
             cells.append(currentDay)
             
@@ -54,23 +55,31 @@ struct Calendar {
         for index in 1 ... range.count {
             let currentDateComponents = DateComponents(year: date.year, month: date.month, day: index)
             let currentDate = calendar.date(from: currentDateComponents)!
-            let currentDay = Day(date: currentDate)
+            let currentDay = DayCell(date: currentDate)
             
             cells.append(currentDay)
         }
         
         while cells.count < Calendar.numberOfCells {
             if let lastCell = cells.last {
-                if let lastDay = lastCell as? Day {
-                    let lastDate = lastDay.date
+                if let lastDayCell = lastCell as? DayCell {
+                    let lastDate = lastDayCell.date
                     let nextDate = calendar.date(byAdding: .day, value: 1, to: lastDate)!
-                    let nextDay = Day(date: nextDate, inMonth: false)
+                    let nextDayCell = DayCell(date: nextDate, inMonth: false)
                     
-                    cells.append(nextDay)
+                    cells.append(nextDayCell)
                 }
             }
         }
         
         return cells
+    }
+    
+    private static func createLocalizedDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale.current
+        
+        return dateFormatter
     }
 }

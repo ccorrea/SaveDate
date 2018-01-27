@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Header: Cell {
+struct SymbolCell: Cell {
     let name: String
     let type: CellType
     
     init(name: String) {
         self.name = name
-        self.type = .header
+        self.type = .symbol
     }
 }
