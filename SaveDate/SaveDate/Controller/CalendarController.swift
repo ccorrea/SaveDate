@@ -9,7 +9,12 @@
 import Foundation
 
 public class CalendarController: UICollectionViewController {
-    // MARK: - Properties (Private)
+    // MARK: - Constants
+    let footerViewIdentifier = "CalendarFooterView"
+    let headerViewIdentifier = "CalendarHeaderView"
+    
+    
+    // MARK: - Properties
     var calendar: Calendar!
     
     
@@ -17,19 +22,22 @@ public class CalendarController: UICollectionViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.collectionViewLayout = CalendarFlowLayout()
+        
         let bundle = Bundle(for: CalendarController.self)
         
         for cellType in CellType.cases {
-            let reuseIdentifier = cellType.rawValue
-            let nib = UINib(nibName: reuseIdentifier, bundle: bundle)
+            let viewCellIdentifier = cellType.rawValue
+            let viewCellNib = UINib(nibName: viewCellIdentifier, bundle: bundle)
             
-            collectionView?.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+            collectionView?.register(viewCellNib, forCellWithReuseIdentifier: viewCellIdentifier)
         }
         
-        let edgeInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-        let calendarFlowLayout = CalendarFlowLayout(minimumInteritemSpacing: 10.0, minimumLineSpacing: 10.0, sectionInset: edgeInsets)
+        let footerViewNib = UINib(nibName: footerViewIdentifier, bundle: bundle)
+        let headerViewNib = UINib(nibName: headerViewIdentifier, bundle: bundle)
         
-        collectionView?.collectionViewLayout = calendarFlowLayout
+        collectionView?.register(footerViewNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerViewIdentifier)
+        collectionView?.register(headerViewNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerViewIdentifier)
     }
     
     
@@ -47,6 +55,23 @@ public class CalendarController: UICollectionViewController {
     
     override public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.calendar.cells.count
+    }
+    
+    override public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let dequeuedView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerViewIdentifier, for: indexPath)
+            let headerView = dequeuedView as! CalendarHeaderView
+            
+            headerView.label.text = calendar.monthName
+            
+            return headerView
+        default:
+            let dequeuedView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewIdentifier, for: indexPath)
+            let footerView = dequeuedView as! CalendarFooterView
+            
+            return footerView
+        }
     }
     
     override public func numberOfSections(in collectionView: UICollectionView) -> Int {

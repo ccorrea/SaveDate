@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         dateFormatter.dateFormat =  "MM/dd/yyyy"
         
-        let date = dateFormatter.date(from: "01/15/2018")!
+        let date = dateFormatter.date(from: "02/01/2018")!
         
         CalendarController.present(caller: self, date: date)
     }

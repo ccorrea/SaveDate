@@ -28,12 +28,14 @@ class CalendarFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    init(minimumInteritemSpacing: CGFloat, minimumLineSpacing: CGFloat, sectionInset: UIEdgeInsets) {
+    override init() {
         super.init()
         
-        self.minimumInteritemSpacing = minimumInteritemSpacing
-        self.minimumLineSpacing = minimumLineSpacing
-        self.sectionInset = sectionInset
+        self.footerReferenceSize = CGSize(width: 50.0, height: 25.0)
+        self.headerReferenceSize = CGSize(width: 50.0, height: 25.0)
+        self.minimumInteritemSpacing = 10.0
+        self.minimumLineSpacing = 10.0
+        self.sectionInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     }
     
     required init?(coder aDecoder: NSCoder) {

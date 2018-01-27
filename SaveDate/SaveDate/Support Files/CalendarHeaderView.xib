@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CalendarHeaderView" customModule="SaveDate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjE-VK-HXJ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="HjE-VK-HXJ" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="7ML-5u-RjV"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="HjE-VK-HXJ" secondAttribute="trailing" id="Ka4-RO-obC"/>
+                <constraint firstItem="HjE-VK-HXJ" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="Kd6-KG-Vm9"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="HjE-VK-HXJ" secondAttribute="bottom" id="sdQ-K2-A4H"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="label" destination="HjE-VK-HXJ" id="plt-jI-arB"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

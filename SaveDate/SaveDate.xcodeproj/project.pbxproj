@@ -36,6 +36,10 @@
 		AAD634C7201BF277008AEBE5 /* CalendarFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD634C6201BF277008AEBE5 /* CalendarFlowLayout.swift */; };
 		AAE3C4361F875F6900F0F721 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4351F875F6900F0F721 /* Calendar.swift */; };
 		AAE3C4381F8775DA00F0F721 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */; };
+		AAE4121F201D0413008FE5E6 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE4121D201D0413008FE5E6 /* CalendarHeaderView.swift */; };
+		AAE41220201D0413008FE5E6 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE4121E201D0413008FE5E6 /* CalendarHeaderView.xib */; };
+		AAE41223201D0AFA008FE5E6 /* CalendarFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE41221201D0AFA008FE5E6 /* CalendarFooterView.swift */; };
+		AAE41224201D0AFA008FE5E6 /* CalendarFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE41222201D0AFA008FE5E6 /* CalendarFooterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		AAD634C6201BF277008AEBE5 /* CalendarFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFlowLayout.swift; sourceTree = "<group>"; };
 		AAE3C4351F875F6900F0F721 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		AAE3C4371F8775DA00F0F721 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
+		AAE4121D201D0413008FE5E6 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		AAE4121E201D0413008FE5E6 /* CalendarHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarHeaderView.xib; sourceTree = "<group>"; };
+		AAE41221201D0AFA008FE5E6 /* CalendarFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFooterView.swift; sourceTree = "<group>"; };
+		AAE41222201D0AFA008FE5E6 /* CalendarFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarFooterView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +212,8 @@
 		AA586B132016C6C900BF0F88 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				AAE41222201D0AFA008FE5E6 /* CalendarFooterView.xib */,
+				AAE4121E201D0413008FE5E6 /* CalendarHeaderView.xib */,
 				AA1E56821F83499900B4944C /* Info.plist */,
 				AA586B142016C7CF00BF0F88 /* NotInMonth.xib */,
 				AA586B182016CA5600BF0F88 /* SaveDate.storyboard */,
@@ -241,6 +251,8 @@
 		AA8D9B0820117995007E9DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AAE41221201D0AFA008FE5E6 /* CalendarFooterView.swift */,
+				AAE4121D201D0413008FE5E6 /* CalendarHeaderView.swift */,
 				AA8D9B0D20117A15007E9DE7 /* CalendarViewCell.swift */,
 			);
 			path = View;
@@ -373,9 +385,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA8D9B1020117A15007E9DE7 /* Symbol.xib in Resources */,
+				AAE41220201D0413008FE5E6 /* CalendarHeaderView.xib in Resources */,
 				AA9EDD7F201830A800E36EEF /* Weekend.xib in Resources */,
 				AA586B192016CA5600BF0F88 /* SaveDate.storyboard in Resources */,
 				AA9EDD7E201830A500E36EEF /* Weekday.xib in Resources */,
+				AAE41224201D0AFA008FE5E6 /* CalendarFooterView.xib in Resources */,
 				AA9EDD7C2018309D00E36EEF /* NotInMonth.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,7 +418,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE41223201D0AFA008FE5E6 /* CalendarFooterView.swift in Sources */,
 				AA6653001F8F3EC300F89F8E /* DateExtensions.swift in Sources */,
+				AAE4121F201D0413008FE5E6 /* CalendarHeaderView.swift in Sources */,
 				AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */,
 				AA8D9B0020115A00007E9DE7 /* CalendarController.swift in Sources */,
 				AAD634C7201BF277008AEBE5 /* CalendarFlowLayout.swift in Sources */,
