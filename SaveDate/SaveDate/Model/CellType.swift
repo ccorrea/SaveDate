@@ -8,10 +8,12 @@
 
 import Foundation
 
-enum CellType {
-    case header
-    case outsideMonth
-    case space
-    case weekday
-    case weekend
+enum CellType: String {
+    case header = "Header"
+    case outsideMonth = "OutsideMonth"
+    case space = "Space"
+    case weekday = "Weekday"
+    case weekend = "Weekend"
+    
+    static let cases = [header, outsideMonth, space, weekday, weekend]
 }
