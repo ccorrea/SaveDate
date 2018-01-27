@@ -1,5 +1,5 @@
 //
-//  SaveDateCell.swift
+//  CalendarViewCell.swift
 //  SaveDate
 //
 //  Created by Christian Correa on 1/18/18.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-public class SaveDateCell: UICollectionViewCell {
+public class CalendarViewCell: UICollectionViewCell {
     @IBOutlet public var label: UILabel!
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

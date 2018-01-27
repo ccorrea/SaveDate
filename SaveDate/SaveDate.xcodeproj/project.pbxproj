@@ -25,7 +25,7 @@
 		AA8D9B0020115A00007E9DE7 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D9AFF20115A00007E9DE7 /* CalendarController.swift */; };
 		AA8D9B0320115B6B007E9DE7 /* CalendarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D9B0220115B6B007E9DE7 /* CalendarControllerTests.swift */; };
 		AA8D9B0720115D86007E9DE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8D9B0420115BC0007E9DE7 /* UIKit.framework */; };
-		AA8D9B0F20117A15007E9DE7 /* SaveDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D9B0D20117A15007E9DE7 /* SaveDateCell.swift */; };
+		AA8D9B0F20117A15007E9DE7 /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D9B0D20117A15007E9DE7 /* CalendarViewCell.swift */; };
 		AA8D9B1020117A15007E9DE7 /* Symbol.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8D9B0E20117A15007E9DE7 /* Symbol.xib */; };
 		AA8D9B1220117BCC007E9DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8D9B1120117BCC007E9DE7 /* ViewController.swift */; };
 		AA9D8CCD1F8DECCF00E69E7C /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */; };
@@ -74,7 +74,7 @@
 		AA8D9AFF20115A00007E9DE7 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		AA8D9B0220115B6B007E9DE7 /* CalendarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarControllerTests.swift; sourceTree = "<group>"; };
 		AA8D9B0420115BC0007E9DE7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AA8D9B0D20117A15007E9DE7 /* SaveDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDateCell.swift; sourceTree = "<group>"; };
+		AA8D9B0D20117A15007E9DE7 /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
 		AA8D9B0E20117A15007E9DE7 /* Symbol.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Symbol.xib; sourceTree = "<group>"; };
 		AA8D9B1120117BCC007E9DE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA9D8CCC1F8DECCF00E69E7C /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
@@ -204,8 +204,8 @@
 		AA586B132016C6C900BF0F88 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA586B142016C7CF00BF0F88 /* NotInMonth.xib */,
 				AA1E56821F83499900B4944C /* Info.plist */,
+				AA586B142016C7CF00BF0F88 /* NotInMonth.xib */,
 				AA586B182016CA5600BF0F88 /* SaveDate.storyboard */,
 				AA8D9B0E20117A15007E9DE7 /* Symbol.xib */,
 				AA586B162016C7E700BF0F88 /* Weekday.xib */,
@@ -241,7 +241,7 @@
 		AA8D9B0820117995007E9DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA8D9B0D20117A15007E9DE7 /* SaveDateCell.swift */,
+				AA8D9B0D20117A15007E9DE7 /* CalendarViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -412,7 +412,7 @@
 				AA12F4711F85D65600F1D7E6 /* Cell.swift in Sources */,
 				AA12F46F1F85D5BE00F1D7E6 /* SymbolCell.swift in Sources */,
 				AAE3C4361F875F6900F0F721 /* Calendar.swift in Sources */,
-				AA8D9B0F20117A15007E9DE7 /* SaveDateCell.swift in Sources */,
+				AA8D9B0F20117A15007E9DE7 /* CalendarViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

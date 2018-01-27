@@ -37,12 +37,12 @@ public class CalendarController: UICollectionViewController {
     override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let calendarCell = calendar.cells[indexPath.row]
         let reuseIdentifier = calendarCell.type.rawValue
-        let cell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        let saveDateCell = cell as! SaveDateCell
+        let dequeuedCell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let calendarViewCell = dequeuedCell as! CalendarViewCell
         
-        saveDateCell.label.text = calendarCell.name
+        calendarViewCell.label.text = calendarCell.name
         
-        return saveDateCell
+        return calendarViewCell
     }
     
     override public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
