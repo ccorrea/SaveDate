@@ -14,17 +14,25 @@ public class CalendarController: UICollectionViewController {
     let headerViewIdentifier = "CalendarHeaderView"
     
     
-    // MARK: - Properties
+    // MARK: - Properties (Public)
     var calendar: Calendar!
+    
+    
+    // MARK: - Properties (Private)
+    var selectedViewCell: CalendarViewCell!
     
     
     // MARK: - UIViewController
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.allowsSelection = true
         collectionView?.collectionViewLayout = CalendarFlowLayout()
         
         let bundle = Bundle(for: CalendarController.self)
+        let viewsNamedSelected = bundle.loadNibNamed("Selected", owner: self, options: nil)!
+        
+        selectedViewCell = viewsNamedSelected.first as! CalendarViewCell
         
         for cellType in CellType.cases {
             let viewCellIdentifier = cellType.rawValue
@@ -53,8 +61,32 @@ public class CalendarController: UICollectionViewController {
         return calendarViewCell
     }
     
+    override public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let genericCell = collectionView.cellForItem(at: indexPath)
+        let calendarViewCell = genericCell as! CalendarViewCell
+        
+        calendarViewCell.resetLabelColor()
+    }
+    
+    override public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let genericCell = collectionView.cellForItem(at: indexPath)
+        let calendarViewCell = genericCell as! CalendarViewCell
+        let backgroundColor = selectedViewCell.label.backgroundColor!
+        let textColor = selectedViewCell.label.textColor!
+        
+        calendarViewCell.setLabelColor(backgroundColor: backgroundColor, textColor: textColor)
+    }
+    
     override public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.calendar.cells.count
+    }
+    
+    override public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let calendarCell = calendar.cells[indexPath.row]
+        let isWeekdaySymbol = (calendarCell.type == .symbol) || (calendarCell.type == .dimmed)
+        let shouldSelectItem = !isWeekdaySymbol
+        
+        return shouldSelectItem
     }
     
     override public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
