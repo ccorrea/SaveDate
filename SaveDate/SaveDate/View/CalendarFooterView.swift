@@ -9,7 +9,9 @@
 import UIKit
 
 class CalendarFooterView: UICollectionReusableView {
-
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var setDateButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

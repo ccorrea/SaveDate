@@ -15,10 +15,20 @@ public class CalendarController: UICollectionViewController {
     
     
     // MARK: - Properties (Public)
+    public var delegate: CalendarDelegate?
+    public var date: Date {
+        get {
+            return calendar.date
+        }
+        set(newDate) {
+            calendar = Calendar(date: newDate)
+        }
+    }
+    
+    
+    // MARK: - Properties (Internal)
     var calendar: Calendar!
-    
-    
-    // MARK: - Properties (Private)
+    var selectedDate: Date!
     var selectedViewCell: CalendarViewCell!
     
     
@@ -32,7 +42,8 @@ public class CalendarController: UICollectionViewController {
         let bundle = Bundle(for: CalendarController.self)
         let viewsNamedSelected = bundle.loadNibNamed("Selected", owner: self, options: nil)!
         
-        selectedViewCell = viewsNamedSelected.first as! CalendarViewCell
+        self.selectedDate = self.calendar.date
+        self.selectedViewCell = viewsNamedSelected.first as! CalendarViewCell
         
         for cellType in CellType.cases {
             let viewCellIdentifier = cellType.rawValue
@@ -61,32 +72,8 @@ public class CalendarController: UICollectionViewController {
         return calendarViewCell
     }
     
-    override public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let genericCell = collectionView.cellForItem(at: indexPath)
-        let calendarViewCell = genericCell as! CalendarViewCell
-        
-        calendarViewCell.resetLabelColor()
-    }
-    
-    override public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let genericCell = collectionView.cellForItem(at: indexPath)
-        let calendarViewCell = genericCell as! CalendarViewCell
-        let backgroundColor = selectedViewCell.label.backgroundColor!
-        let textColor = selectedViewCell.label.textColor!
-        
-        calendarViewCell.setLabelColor(backgroundColor: backgroundColor, textColor: textColor)
-    }
-    
     override public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.calendar.cells.count
-    }
-    
-    override public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let calendarCell = calendar.cells[indexPath.row]
-        let isWeekdaySymbol = (calendarCell.type == .symbol) || (calendarCell.type == .dimmed)
-        let shouldSelectItem = !isWeekdaySymbol
-        
-        return shouldSelectItem
     }
     
     override public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -102,6 +89,9 @@ public class CalendarController: UICollectionViewController {
             let dequeuedView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerViewIdentifier, for: indexPath)
             let footerView = dequeuedView as! CalendarFooterView
             
+            footerView.cancelButton.addTarget(self, action: #selector(cancelSelection), for: UIControlEvents.touchUpInside)
+            footerView.setDateButton.addTarget(self, action: #selector(selectDate), for: UIControlEvents.touchUpInside)
+            
             return footerView
         }
     }
@@ -111,14 +101,48 @@ public class CalendarController: UICollectionViewController {
     }
     
     
+    // MARK: - UICollectionViewDelegate
+    override public func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let genericCell = collectionView.cellForItem(at: indexPath)
+        let calendarViewCell = genericCell as! CalendarViewCell
+        
+        calendarViewCell.resetLabelColor()
+    }
+    
+    override public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let genericCell = collectionView.cellForItem(at: indexPath)
+        let calendarViewCell = genericCell as! CalendarViewCell
+        let backgroundColor = selectedViewCell.label.backgroundColor!
+        let textColor = selectedViewCell.label.textColor!
+        
+        calendarViewCell.setLabelColor(backgroundColor: backgroundColor, textColor: textColor)
+        
+        let modelCell = calendar.cells[indexPath.row]
+        let dayCell = modelCell as! DayCell
+        
+        self.selectedDate = dayCell.date
+    }
+    
+    override public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let calendarCell = calendar.cells[indexPath.row]
+        let isWeekdaySymbol = (calendarCell.type == .symbol) || (calendarCell.type == .dimmed)
+        let shouldSelectItem = !isWeekdaySymbol
+        
+        return shouldSelectItem
+    }
+    
+    
     // MARK: - CalendarController
-    public static func present(caller: UIViewController, date: Date) {
-        let bundle = Bundle(for: CalendarController.self)
-        let storyboard = UIStoryboard(name: "SaveDate", bundle: bundle)
-        let viewController = storyboard.instantiateInitialViewController()! as! CalendarController
+    @IBAction public func cancelSelection() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction public func selectDate() {
+        guard let theDelegate = self.delegate else {
+            return
+        }
         
-        viewController.calendar = Calendar(date: date)
-        
-        caller.present(viewController, animated: true, completion: nil)
+        theDelegate.didSelectDate(date: self.selectedDate)
+        self.dismiss(animated: true, completion: nil)
     }
 }

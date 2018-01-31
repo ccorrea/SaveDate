@@ -14,7 +14,36 @@
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CalendarFooterView" customModule="SaveDate" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BRa-wt-V98">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-Gp-oYs">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqo-iB-gyS">
+                            <rect key="frame" x="160" y="0.0" width="160" height="50"/>
+                            <state key="normal" title="Set Date">
+                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="BRa-wt-V98" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="ISb-AW-Shf"/>
+                <constraint firstItem="BRa-wt-V98" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="SQr-kW-Xr2"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="BRa-wt-V98" secondAttribute="bottom" id="cg8-9B-cgQ"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="BRa-wt-V98" secondAttribute="trailing" id="xtu-fv-ZLa"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="cancelButton" destination="QgA-Gp-oYs" id="Zql-oj-32k"/>
+                <outlet property="setDateButton" destination="Rqo-iB-gyS" id="Ivi-5L-KPm"/>
+            </connections>
         </collectionReusableView>
     </objects>
 </document>

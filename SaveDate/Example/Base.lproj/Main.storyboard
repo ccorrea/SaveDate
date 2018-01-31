@@ -17,25 +17,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgh-cH-bIP">
-                                <rect key="frame" x="135" y="318" width="104" height="30"/>
-                                <state key="normal" title="Show Calendar"/>
-                                <connections>
-                                    <action selector="showCalendar" destination="QXQ-mL-OVW" eventType="touchUpInside" id="EGf-Bf-DcC"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cgE-nd-N4w">
+                                <rect key="frame" x="127" y="309.5" width="120" height="48"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="50o-pC-1LK">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2M7-dm-OEc">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgh-cH-bIP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                        <state key="normal" title="Show Calendar">
+                                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="showCalendar" destination="QXQ-mL-OVW" eventType="touchUpInside" id="EGf-Bf-DcC"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Date Selected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQQ-ZR-7LF">
+                                                        <rect key="frame" x="0.0" y="30" width="120" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Mgh-cH-bIP" firstAttribute="centerY" secondItem="qhY-Bx-Lol" secondAttribute="centerY" id="G3d-MW-INM"/>
-                            <constraint firstItem="Mgh-cH-bIP" firstAttribute="centerX" secondItem="qhY-Bx-Lol" secondAttribute="centerX" id="rDN-gF-aZ9"/>
+                            <constraint firstItem="cgE-nd-N4w" firstAttribute="centerY" secondItem="qhY-Bx-Lol" secondAttribute="centerY" id="OQw-Yx-hEn"/>
+                            <constraint firstItem="cgE-nd-N4w" firstAttribute="centerX" secondItem="qhY-Bx-Lol" secondAttribute="centerX" id="gC1-LY-FWT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gh3-oR-dz8"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="SQQ-ZR-7LF" id="baQ-6l-Jho"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKt-rq-0fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-670" y="-79"/>
+            <point key="canvasLocation" x="-671.20000000000005" y="-79.610194902548727"/>
         </scene>
     </scenes>
 </document>
