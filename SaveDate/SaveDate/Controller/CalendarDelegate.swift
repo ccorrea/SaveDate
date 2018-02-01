@@ -9,5 +9,6 @@
 import Foundation
 
 public protocol CalendarDelegate {
-    func didSelectDate(date: Date)
+    func didCancelSelectionFromCalendar()
+    func didSelectDateFromCalendar(date: Date)
 }

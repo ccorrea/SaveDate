@@ -10,6 +10,10 @@ import UIKit
 import SaveDate
 
 class ViewController: UIViewController, CalendarDelegate {
+    // MARK: - Properties (Private)
+    var calendarController: CalendarController!
+    
+    
     // MARK: - Outlets
     @IBOutlet var dateLabel: UILabel!
     
@@ -25,14 +29,19 @@ class ViewController: UIViewController, CalendarDelegate {
     
     
     // MARK: - CalendarDelegate
-    func didSelectDate(date: Date) {
+    func didCancelSelectionFromCalendar() {
+        self.calendarController.dismiss(animated: true, completion: nil)
+    }
+    
+    func didSelectDateFromCalendar(date: Date) {
         let dateFormatter = DateFormatter()
         
         dateFormatter.locale = Locale.current
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-        
         self.dateLabel.text = dateFormatter.string(from: date)
+        
+        self.calendarController.dismiss(animated: true, completion: nil)
     }
     
     
@@ -45,8 +54,8 @@ class ViewController: UIViewController, CalendarDelegate {
         let date = dateFormatter.date(from: "01/01/2018")!
         let bundle = Bundle(for: CalendarController.self)
         let storyboard = UIStoryboard(name: "SaveDate", bundle: bundle)
-        let calendarController = storyboard.instantiateInitialViewController()! as! CalendarController
         
+        self.calendarController = storyboard.instantiateInitialViewController()! as! CalendarController
         calendarController.date = date
         calendarController.delegate = self
         

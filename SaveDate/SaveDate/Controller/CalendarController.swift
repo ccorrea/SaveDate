@@ -134,7 +134,11 @@ public class CalendarController: UICollectionViewController {
     
     // MARK: - CalendarController
     @IBAction public func cancelSelection() {
-        self.dismiss(animated: true, completion: nil)
+        guard let theDelegate = self.delegate else {
+            return
+        }
+        
+        theDelegate.didCancelSelectionFromCalendar()
     }
     
     @IBAction public func selectDate() {
@@ -142,7 +146,6 @@ public class CalendarController: UICollectionViewController {
             return
         }
         
-        theDelegate.didSelectDate(date: self.selectedDate)
-        self.dismiss(animated: true, completion: nil)
+        theDelegate.didSelectDateFromCalendar(date: self.selectedDate)
     }
 }
