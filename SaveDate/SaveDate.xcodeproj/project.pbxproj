@@ -55,6 +55,13 @@
 			remoteGlobalIDString = AA1E567D1F83499900B4944C;
 			remoteInfo = SaveDate;
 		};
+		AA83E0F821123FD900BBA231 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA1E56751F83499900B4944C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA550F671F99D3E200BC9A68;
+			remoteInfo = Example;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -342,6 +349,7 @@
 			);
 			dependencies = (
 				AA1E568A1F83499900B4944C /* PBXTargetDependency */,
+				AA83E0F921123FD900BBA231 /* PBXTargetDependency */,
 			);
 			name = SaveDateTests;
 			productName = SaveDateTests;
@@ -383,6 +391,7 @@
 					AA1E56861F83499900B4944C = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						TestTargetID = AA550F671F99D3E200BC9A68;
 					};
 					AA550F671F99D3E200BC9A68 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -497,6 +506,11 @@
 			isa = PBXTargetDependency;
 			target = AA1E567D1F83499900B4944C /* SaveDate */;
 			targetProxy = AA1E56891F83499900B4944C /* PBXContainerItemProxy */;
+		};
+		AA83E0F921123FD900BBA231 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA550F671F99D3E200BC9A68 /* Example */;
+			targetProxy = AA83E0F821123FD900BBA231 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -691,6 +705,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
 		};
@@ -705,6 +720,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
 		};
