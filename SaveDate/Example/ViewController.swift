@@ -47,11 +47,7 @@ class ViewController: UIViewController, CalendarDelegate {
     
     // MARK: - ViewController
     @IBAction func showCalendar() {
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat =  "MM/dd/yyyy"
-        
-        let date = dateFormatter.date(from: "01/01/2018")!
+        let date = Date()
         let bundle = Bundle(for: CalendarController.self)
         let storyboard = UIStoryboard(name: "SaveDate", bundle: bundle)
         

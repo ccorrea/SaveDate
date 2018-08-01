@@ -8,11 +8,11 @@
 
 import UIKit
 
-class CalendarFooterView: UICollectionReusableView {
+public class CalendarFooterView: UICollectionReusableView {
     @IBOutlet var cancelButton: UIButton!
     @IBOutlet var setDateButton: UIButton!
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

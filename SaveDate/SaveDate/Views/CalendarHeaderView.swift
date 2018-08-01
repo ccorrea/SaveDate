@@ -8,10 +8,10 @@
 
 import UIKit
 
-class CalendarHeaderView: UICollectionReusableView {
+public class CalendarHeaderView: UICollectionReusableView {
     @IBOutlet public var label: UILabel!
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
     }
 }
